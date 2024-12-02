@@ -27,10 +27,10 @@ def evaluate_list(l):
     sublists = [copy.deepcopy(l) for _ in l]
     for j, sublist in enumerate(sublists):
         del sublist[j]
-        print(sublist, end=" ")
+        # print(sublist, end=" ")
         deltas = get_deltas(sublist)
         result = evaluate_deltas(deltas)
-        print(result)
+        # print(result)
         if result:
             return True
     return False
@@ -38,12 +38,10 @@ def evaluate_list(l):
 
 lists = [[int(x) for x in line.strip().split()] for line in open("input02").readlines()]
 
-
 # pprint.pprint(lists)
 good = 0
 for i, l in enumerate(lists):
     result = evaluate_list(l)
-
     if result:
         good += 1
 
