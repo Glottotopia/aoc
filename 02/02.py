@@ -10,15 +10,15 @@ def get_deltas(l):
     return result
 
 
-def evaluate_changes(changes):
-    signs = {math.copysign(1, x) for x in changes}
+def evaluate_deltas(deltas):
+    signs = {math.copysign(1, x) for x in deltas}
     if len(signs) != 1:  # there is either no sign, or both + and -
         return False
-    if 0 in changes:
+    if 0 in deltas:
         return False
-    if max(changes) > 3:
+    if max(deltas) > 3:
         return False
-    if min(changes) < -3:
+    if min(deltas) < -3:
         return False
     return True
 
@@ -28,8 +28,8 @@ def evaluate_list(l):
     for j, sublist in enumerate(sublists):
         del sublist[j]
         print(sublist, end=" ")
-        changes = get_deltas(sublist)
-        result = evaluate_changes(changes)
+        deltas = get_deltas(sublist)
+        result = evaluate_deltas(deltas)
         print(result)
         if result:
             return True
