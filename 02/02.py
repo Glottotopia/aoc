@@ -3,7 +3,7 @@ import pprint
 import copy
 
 
-def get_changes(l):
+def get_deltas(l):
     result = []
     for i in range(1, len(l)):
         result.append(l[i] - l[i - 1])
@@ -28,7 +28,7 @@ def evaluate_list(l):
     for j, sublist in enumerate(sublists):
         del sublist[j]
         print(sublist, end=" ")
-        changes = get_changes(sublist)
+        changes = get_deltas(sublist)
         result = evaluate_changes(changes)
         print(result)
         if result:
